@@ -1,0 +1,97 @@
+.canvas {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.poemText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  text-align: center;
+  font-size: 1.8rem;
+  color: rgba(51, 51, 51, 0.7);
+  font-weight: 500;
+  line-height: 1.7;
+  pointer-events: none;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.poeticParticle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #ff8a8a, #e04d5a);
+  border-radius: 50%;
+  box-shadow: 0 0 12px #ff6b6b;
+  filter: blur(1px);
+  pointer-events: none;
+}
+
+.blackholeContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 25vh; /* سیاه‌چاله را در ۲۵٪ بالای صفحه قرار می‌دهد */
+  pointer-events: none;
+  z-index: 100;
+}
+
+.blackhole {
+  margin: 100px auto;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, #4a0072 0%, #000 70%);
+  border-radius: 50%;
+  cursor: none;
+  box-shadow: 0 0 20px 10px #4a0072, inset 0 0 15px 5px #000;
+  animation: rotateBlackhole 10s linear infinite;
+  pointer-events: auto; /* خود سیاه‌چاله باید قابل کلیک باشد */
+  position: relative; /* برای موقعیت‌یابی شبه‌المان */
+}
+
+.blackhole::before {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: -10%;
+  left: -10%;
+  border: 2px dashed #8e2de2;
+  border-radius: 50%;
+  animation: rotateBlackhole 20s linear infinite reverse;
+  opacity: 0.5;
+}
+
+@keyframes rotateBlackhole {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slowPan {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .poemText {
+    font-size: 3vw !important;
+  }
+}

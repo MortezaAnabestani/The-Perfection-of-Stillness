@@ -1,0 +1,77 @@
+.canvas {
+  width: 100%;
+  height: 100%;
+  background: #00000c;
+  background-image: radial-gradient(white, rgba(255, 255, 255, 0.2) 2px, transparent 40px),
+    radial-gradient(white, rgba(255, 255, 255, 0.15) 1px, transparent 30px),
+    radial-gradient(white, rgba(255, 255, 255, 0.1) 2px, transparent 40px),
+    radial-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1) 2px, transparent 30px);
+  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+  animation: moveStars 200s linear infinite;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+@keyframes moveStars {
+  from {
+    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+  }
+  to {
+    background-position: -10000px 5000px, -10000px 5000px, -10000px 5000px, -10000px 5000px;
+  }
+}
+.poemText {
+  position: absolute;
+  /* دیگر نیازی به top, left, transform در اینجا نیست */
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  pointer-events: auto;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  /* یک z-index بالاتر می‌دهیم تا روی UnmovedMover قرار بگیرد */
+  z-index: 20;
+}
+
+.lineContainer {
+  position: relative; /* موقعیت کلمات نسبت به این کانتینر محاسبه می‌شود */
+  display: flex; /* کلمات را در یک خط قرار می‌دهد */
+  justify-content: center; /* کلمات را در مرکز خط قرار می‌دهد */
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.word {
+  display: inline-block;
+  margin: 0 5px; /* فاصله بین کلمات در حالت عادی */
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.3s ease;
+}
+.lineContainer:hover .word {
+  color: #5bffff;
+}
+.instruction {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .poemText {
+    font-size: 4vw;
+  }
+}
+
+.sceneCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* transform اینجا اعمال می‌شود و نه روی poemText */
+  transform: translate(-50%, -50%);
+  /* ابعاد را برای جا دادن مدارها در نظر می‌گیریم */
+  width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
