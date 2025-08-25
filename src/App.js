@@ -6,7 +6,6 @@ import AppleTreeScene from "./components/appleTreeScene/AppleTreeScene";
 import { motion, AnimatePresence } from "framer-motion";
 import "./App.css";
 import CustomCursor from "./components/CustomCursor";
-import backgroundMusic from "./assets/sounds/background-music.wav";
 
 const StartScreen = ({ onStart }) => (
   <div className="startScreen">
@@ -68,7 +67,7 @@ function App() {
   return (
     <div className="App">
       <CustomCursor />
-      <audio ref={audioRef} src={backgroundMusic} loop />
+      <audio ref={audioRef} src={`${process.env.PUBLIC_URL}/assets/sounds/background-music.mp3`} loop />{" "}
       <AnimatePresence>{renderScene()}</AnimatePresence>
       <div className="guideUser">
         <p>راهنمای تعامل با متن:</p>
