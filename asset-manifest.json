@@ -1,14 +1,13 @@
 {
   "files": {
     "main.css": "/The-Perfection-of-Stillness/static/css/main.a01ed2fe.css",
-    "main.js": "/The-Perfection-of-Stillness/static/js/main.2c1f71c2.js",
-    "static/media/background-music.wav": "/The-Perfection-of-Stillness/static/media/background-music.a1ff3229a41f3a3ab95f.wav",
+    "main.js": "/The-Perfection-of-Stillness/static/js/main.7e511542.js",
     "index.html": "/The-Perfection-of-Stillness/index.html",
     "main.a01ed2fe.css.map": "/The-Perfection-of-Stillness/static/css/main.a01ed2fe.css.map",
-    "main.2c1f71c2.js.map": "/The-Perfection-of-Stillness/static/js/main.2c1f71c2.js.map"
+    "main.7e511542.js.map": "/The-Perfection-of-Stillness/static/js/main.7e511542.js.map"
   },
   "entrypoints": [
     "static/css/main.a01ed2fe.css",
-    "static/js/main.2c1f71c2.js"
+    "static/js/main.7e511542.js"
   ]
 }
