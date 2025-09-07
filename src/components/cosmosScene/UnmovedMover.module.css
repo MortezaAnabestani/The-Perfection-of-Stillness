@@ -1,8 +1,8 @@
 .container {
   position: absolute;
-  top: 50%; /* بازگرداندن به مرکز */
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* مرکزیت اولیه */
+  transform: translate(-50%, -50%);
   width: 400px;
   height: 400px;
   display: flex;
@@ -19,19 +19,16 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  transform-style: preserve-3d; /* برای عملکرد بهتر شبه‌المان‌ها */
+  transform-style: preserve-3d;
 
-  /* استایل حالت عادی (خورشید) */
   background: radial-gradient(circle, #fff, #ffd700);
   box-shadow: 0 0 20px 8px #fff, 0 0 40px 20px #ff8c00, 0 0 70px 40px #ff450033;
   animation: corePulse 5s infinite ease-in-out;
-  transform: scale(1); /* مقیاس اولیه */
+  transform: scale(1);
 
-  /* transition برای تمام تغییرات */
   transition: all 1s ease-in-out;
 }
 
-/* شراره‌های خورشیدی */
 .core::after {
   content: "";
   position: absolute;
@@ -60,19 +57,17 @@
   transform-style: preserve-3d;
   border: 1px dashed rgba(255, 255, 255, 0.2);
 
-  /* انیمیشن چرخش */
   animation-name: spin;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 
-  /* transition برای تمام تغییرات در حالت سیاه‌چاله */
   transition: all 1.2s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .orbit1 {
   width: 180px;
   height: 180px;
-  transform: rotateX(75deg); /* موقعیت اولیه سه‌بعدی */
+  transform: rotateX(75deg);
   animation-duration: 15s;
 }
 
@@ -126,7 +121,6 @@
   border-radius: 50%;
   box-shadow: 0 0 15px 2px #00ffff;
 }
-/* دم دنباله‌دار */
 .comet::after {
   content: "";
   position: absolute;
@@ -146,12 +140,10 @@
   height: 2px;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 50%;
-  /* استفاده از متغیرهای CSS برای قرار دادن هر ذره روی مدار */
   transform: rotate(var(--angle)) translateY(var(--radius));
   animation: flicker 5s infinite ease-in-out;
 }
 
-/* --- هاله‌های گازی --- */
 .halo {
   position: absolute;
   border-radius: 50%;
@@ -182,45 +174,36 @@
 }
 
 .blackholeMode {
-  /* کل سیستم به نرمی می‌چرخد و بزرگ می‌شود */
   transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
 
-  /* انتخاب تمام فرزندان مستقیم و اعمال transition-delay */
-  /* این باعث می‌شود تغییر حالت دراماتیک‌تر شود */
   & > * {
     transition-delay: 0.2s;
   }
 
   & .core {
-    /* انیمیشن تپش سیاه‌چاله را جایگزین انیمیشن خورشید می‌کنیم */
     animation: blackholePulse 2s infinite ease-in-out;
     background: #000;
-    transform: scale(0.7); /* هسته کوچک می‌شود */
+    transform: scale(0.7);
     box-shadow: 0 0 15px 5px #c200ff, 0 0 30px 15px #000, 0 0 60px 30px #c200ffaa;
   }
 
   & .core::after {
-    /* شراره‌ها محو می‌شوند */
     opacity: 0;
   }
 
-  /* مدارها به سمت مرکز کشیده (scale(0.1)) و محو می‌شوند (opacity: 0) */
   & .orbit {
-    /* مهم: باید تمام مقادیر transform حالت پایه را اینجا تکرار کنیم */
     transform: rotateX(75deg) scale(0.1);
     opacity: 0;
     border-color: #c200ff;
-    animation-duration: 2s !important; /* چرخش بسیار سریع */
+    animation-duration: 2s !important;
   }
 
-  /* هاله‌ها بزرگ‌تر و پررنگ‌تر می‌شوند */
   & .halo {
     opacity: 0.5;
-    animation-duration: 3s !important; /* چرخش سریع‌تر */
-    mix-blend-mode: lighten; /* تغییر blend mode برای حس بیشتر */
+    animation-duration: 3s !important;
+    mix-blend-mode: lighten;
   }
 
-  /* مهم: مقادیر transform حالت پایه را اینجا تکرار می‌کنیم و scale را اضافه می‌کنیم */
   & .halo1 {
     transform: rotateX(80deg) rotateY(20deg) scale(2.5);
   }
@@ -239,7 +222,6 @@
   }
 }
 
-/* انیمیشن چرخش اصلی */
 @keyframes spin {
   from {
     transform: rotate(0deg);

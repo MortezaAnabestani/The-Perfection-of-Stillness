@@ -41,7 +41,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 25vh; /* سیاه‌چاله را در ۲۵٪ بالای صفحه قرار می‌دهد */
+  padding-top: 25vh;
   pointer-events: none;
   z-index: 100;
 }
@@ -55,8 +55,8 @@
   cursor: none;
   box-shadow: 0 0 20px 10px #4a0072, inset 0 0 15px 5px #000;
   animation: rotateBlackhole 10s linear infinite;
-  pointer-events: auto; /* خود سیاه‌چاله باید قابل کلیک باشد */
-  position: relative; /* برای موقعیت‌یابی شبه‌المان */
+  pointer-events: auto;
+  position: relative;
 }
 
 .blackhole::before {

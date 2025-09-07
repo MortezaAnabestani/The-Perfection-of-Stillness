@@ -7,11 +7,11 @@ import Particle from "./Particle";
 const AnimatedText = ({ text, lineIndex }) => {
   const [isHovered, setIsHovered] = useState(false);
   const words = text.split(" ");
-  const radius = 80 + lineIndex * 50; // هر خط شعر، یک مدار با شعاع بزرگتر
+  const radius = 80 + lineIndex * 50;
 
   return (
     <motion.div
-      className={styles.lineContainer} // از یک کلاس جدید استفاده می‌کنیم
+      className={styles.lineContainer}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       initial={{ opacity: 0 }}
@@ -19,7 +19,6 @@ const AnimatedText = ({ text, lineIndex }) => {
       transition={{ duration: 1, delay: lineIndex * 2 }}
     >
       {words.map((word, index) => {
-        // محاسبه زاویه برای هر کلمه روی مدار
         const angle = (index / words.length) * 2 * Math.PI;
 
         return (
@@ -27,10 +26,8 @@ const AnimatedText = ({ text, lineIndex }) => {
             key={index}
             className={styles.word}
             animate={{
-              // اگر موس روی خط قرار دارد، به موقعیت مداری برو
               x: isHovered ? radius * Math.cos(angle) : 0,
               y: isHovered ? radius * Math.sin(angle) : 0,
-              // چرخش خود کلمه برای همسو شدن با مدار
               rotate: isHovered ? (angle * 180) / Math.PI + 90 : 0,
             }}
             transition={{

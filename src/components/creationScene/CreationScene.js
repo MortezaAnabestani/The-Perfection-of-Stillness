@@ -4,7 +4,6 @@ import styles from "./CreationScene.module.css";
 import UnmovedMover from "../cosmosScene/UnmovedMover";
 import DriftingParticle from "./DriftingParticle";
 
-// کامپوننت GuideComet بدون تغییر
 const GuideComet = ({ progress }) => (
   <motion.div
     className={styles.guideComet}
@@ -18,7 +17,6 @@ const GuideComet = ({ progress }) => (
   </motion.div>
 );
 
-// کامپوننت AnimatedWord بدون تغییر
 const AnimatedWord = ({ children, progress, index }) => {
   const wordOpacity = useTransform(progress, [index * 0.05, index * 0.05 + 0.2], [0, 1]);
   const wordY = useTransform(progress, [index * 0.05, index * 0.05 + 0.2], [50, 0]);
@@ -39,7 +37,6 @@ const AnimatedWord = ({ children, progress, index }) => {
 
 const CreationScene = ({ goToNextScene }) => {
   const [guideAnimationComplete, setGuideAnimationComplete] = useState(false);
-  // state را به isBlackhole تغییر نام می‌دهیم تا خواناتر باشد
   const [isBlackhole, setIsBlackhole] = useState(true);
 
   const mouseX = useMotionValue(0);
@@ -58,7 +55,6 @@ const CreationScene = ({ goToNextScene }) => {
     return () => controls.stop();
   }, [progress, mouseX, mouseY]);
 
-  // --- مدیریت رویداد موس ---
   const handleMouseMove = (e) => {
     if (guideAnimationComplete) {
       const currentMouseY = e.clientY;
@@ -68,16 +64,13 @@ const CreationScene = ({ goToNextScene }) => {
       const progressValue = 1 - (currentMouseY - window.innerHeight * 0.2) / (window.innerHeight * 0.6);
       progress.set(Math.max(0, Math.min(1, progressValue)));
 
-      // <<<<<<<<<<<<<<<<<<<<<<<<<<<< شروع اصلاح کلیدی >>>>>>>>>>>>>>>>>>>>>>>
       const threshold = window.innerHeight * 0.6;
 
-      // از مقدار عددی currentMouseY برای مقایسه استفاده می‌کنیم
       if (currentMouseY > threshold) {
         if (!isBlackhole) setIsBlackhole(true);
       } else {
         if (isBlackhole) setIsBlackhole(false);
       }
-      // <<<<<<<<<<<<<<<<<<<<<<<<<<<< پایان اصلاح کلیدی >>>>>>>>>>>>>>>>>>>>>>>
     }
   };
 
@@ -106,7 +99,6 @@ const CreationScene = ({ goToNextScene }) => {
         animate={{ opacity: guideAnimationComplete ? 1 : 0 }}
       />
 
-      {/* پاس دادن state صحیح */}
       <UnmovedMover isBlackhole={isBlackhole} />
 
       {!guideAnimationComplete && <GuideComet progress={progress} />}

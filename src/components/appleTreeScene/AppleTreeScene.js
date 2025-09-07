@@ -161,14 +161,12 @@ const AppleTreeScene = ({ goToNextScene }) => {
     const { Bodies, World } = Matter;
     const newFallingElements = [];
 
-    // به جای پیمایش خطوط، مستقیماً کلمات را از رفرنس‌ها می‌خوانیم
     Object.values(poemWordRefs.current).forEach((wordElement) => {
-      if (!wordElement) return; // اگر رفرنس هنوز ست نشده، رد شو
+      if (!wordElement) return;
 
       const rect = wordElement.getBoundingClientRect();
       const wordText = wordElement.innerText;
 
-      // اگر کلمه خالی است (مثلاً به خاطر space)، رد شو
       if (wordText.trim() === "") return;
 
       const body = Bodies.rectangle(
@@ -188,7 +186,6 @@ const AppleTreeScene = ({ goToNextScene }) => {
       World.add(engineRef.current.world, body);
       newFallingElements.push(newElement);
     });
-    // <<<<<<<<<<<<<<<<<<<<<<<<<<<< پایان بازنویسی کامل collapsePoem >>>>>>>>>>>>>>>>>>>>>>>
 
     setFallingWords((w) => [...w, ...newFallingElements]);
     poemTextRef.current.style.transition = "opacity 0.5s ease";

@@ -24,26 +24,24 @@
 }
 .poemText {
   position: absolute;
-  /* دیگر نیازی به top, left, transform در اینجا نیست */
   text-align: center;
   font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.7);
   pointer-events: auto;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  /* یک z-index بالاتر می‌دهیم تا روی UnmovedMover قرار بگیرد */
   z-index: 20;
 }
 
 .lineContainer {
-  position: relative; /* موقعیت کلمات نسبت به این کانتینر محاسبه می‌شود */
-  display: flex; /* کلمات را در یک خط قرار می‌دهد */
-  justify-content: center; /* کلمات را در مرکز خط قرار می‌دهد */
+  position: relative;
+  display: flex;
+  justify-content: center;
   margin-bottom: 20px;
   cursor: pointer;
 }
 .word {
   display: inline-block;
-  margin: 0 5px; /* فاصله بین کلمات در حالت عادی */
+  margin: 0 5px;
   color: rgba(255, 255, 255, 0.7);
   transition: color 0.3s ease;
 }
@@ -66,9 +64,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  /* transform اینجا اعمال می‌شود و نه روی poemText */
   transform: translate(-50%, -50%);
-  /* ابعاد را برای جا دادن مدارها در نظر می‌گیریم */
   width: 400px;
   height: 400px;
   display: flex;
